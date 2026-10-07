@@ -1,4 +1,4 @@
-name: Vesvabot Respond
+name: PeggBot Respond
 
 on:
   issue_comment:
@@ -10,25 +10,25 @@ permissions:
 
 jobs:
   respond:
-    if: contains(github.event.comment.body, '@vesvabot')
+    if: contains(github.event.comment.body, '@peggbot')
     runs-on: ubuntu-latest
     timeout-minutes: 20
     steps:
       - uses: actions/checkout@v4
 
-      - name: Run vesvabot
-        uses: vesvai/vesvabot@v0.1
+      - name: Run peggbot
+        uses: peggco/peggbot@v0.2
         with:
           mode: respond
           token: ${{ secrets.GITHUB_TOKEN }}
-          llm-provider: ${{ secrets.VESVABOT_PROVIDER }}
-          llm-model: ${{ secrets.VESVABOT_MODEL }}
-          llm-api-key: ${{ secrets.VESVABOT_API_KEY }}
+          llm-provider: ${{ secrets.PEGGBOT_PROVIDER }}
+          llm-model: ${{ secrets.PEGGBOT_MODEL }}
+          llm-api-key: ${{ secrets.PEGGBOT_API_KEY }}
           prompt-file: .github/prompts/respond.md
           skills-dir: .github/prompts
           issue-number: ${{ github.event.issue.number }}
           required-permission: admin
           unauthorized-action: skip
-          bot-login: vesvabot
+          bot-login: peggbot
           max-iterations: '40'
           timeout-minutes: '15'

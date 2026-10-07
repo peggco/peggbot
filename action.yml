@@ -1,8 +1,8 @@
-name: 'Vesvabot'
+name: 'PeggBot'
 description: >-
-  AI GitHub bot powered by the Vesvai. Solves labeled issues and opens
+  AI GitHub bot powered by the Pegg. Solves labeled issues and opens
   pull requests, reviews pull requests, and more...
-author: 'vesvabot'
+author: 'peggbot'
 branding:
   icon: 'code'
   color: 'purple'
@@ -18,7 +18,7 @@ inputs:
     required: true
 
   llm-provider:
-    description: 'LLM provider name as registered in vesvai, e.g. anthropic, openai.'
+    description: 'LLM provider name as registered in pegg, e.g. anthropic, openai.'
     required: true
   llm-model:
     description: 'LLM model id, e.g. claude-sonnet-4-5 or gpt-4o.'
@@ -75,11 +75,11 @@ inputs:
   bot-login:
     description: 'The bot account login. Its own comments are never answered.'
     required: false
-    default: 'vesvabot'
+    default: 'peggbot'
   branch-prefix:
     description: 'Branch prefix for solve-issue (branch becomes <prefix>/issue-<n>).'
     required: false
-    default: 'vesvabot'
+    default: 'peggbot'
   base-branch:
     description: 'Base branch for pull requests opened by solve-issue.'
     required: false
@@ -136,12 +136,12 @@ runs:
         INPUT_BOT_LOGIN: ${{ inputs.bot-login }}
         INPUT_TOKEN: ${{ inputs.token }}
 
-    - name: Run vesvabot
+    - name: Run peggbot
       shell: bash
       run: |
         cd "$GITHUB_ACTION_PATH"
-        go build -o "$RUNNER_TEMP/vesvabot" ./cmd/vesvabot
-        "$RUNNER_TEMP/vesvabot"
+        go build -o "$RUNNER_TEMP/peggbot" ./cmd/peggbot
+        "$RUNNER_TEMP/peggbot"
       env:
         INPUT_MODE: ${{ inputs.mode }}
         INPUT_TOKEN: ${{ inputs.token }}

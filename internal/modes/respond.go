@@ -6,8 +6,8 @@ import (
 	"log"
 	"strings"
 
-	"github.com/vesvabot/vesvabot/internal/config"
-	"github.com/vesvabot/vesvabot/internal/github"
+	"github.com/peggco/peggbot/internal/config"
+	"github.com/peggco/peggbot/internal/github"
 )
 
 func Respond(ctx context.Context, cfg *config.Config, gh *github.Client) error {
@@ -32,7 +32,7 @@ func Respond(ctx context.Context, cfg *config.Config, gh *github.Client) error {
 		log.Printf("respond: %s has %q permission, need %q — ignoring", cfg.Actor, level, cfg.RequiredPermission)
 		if !cfg.DryRun && cfg.UnauthorizedAction == "comment" {
 			body := fmt.Sprintf(
-				"@%s vesvabot only responds to repository %s, and you have %q access here.",
+				"@%s peggbot only responds to repository %s, and you have %q access here.",
 				cfg.Actor, cfg.RequiredPermission, level)
 			url, err := gh.PostComment(ctx, number, body)
 			if err != nil {

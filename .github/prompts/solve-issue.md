@@ -1,6 +1,6 @@
 # Solve issue — additional instructions
 
-These instructions are appended to vesvabot's default solve-issue prompt.
+These instructions are appended to peggbot's default solve-issue prompt.
 Customize them per repository.
 
 - This repository uses a specific test command. Prefer:

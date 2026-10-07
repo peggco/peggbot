@@ -12,7 +12,7 @@ func TestLoadEvent(t *testing.T) {
 	payload := `{
 		"action": "created",
 		"issue": {"number": 7, "title": "Bug", "body": "It breaks"},
-		"comment": {"id": 99, "body": "@vesvabot is this really an issue?"},
+		"comment": {"id": 99, "body": "@peggbot is this really an issue?"},
 		"sender": {"login": "admin"},
 		"label": null
 	}`
@@ -32,7 +32,7 @@ func TestLoadEvent(t *testing.T) {
 	if ev.IsPullRequestConversation() {
 		t.Error("expected issue, got pull request")
 	}
-	if !Mentions(ev.Comment.Body, "vesvabot") {
+	if !Mentions(ev.Comment.Body, "peggbot") {
 		t.Error("expected mention detection")
 	}
 	if ev.Raw == nil {
@@ -43,7 +43,7 @@ func TestLoadEvent(t *testing.T) {
 func TestLoadEventPullRequestConversation(t *testing.T) {
 	dir := t.TempDir()
 	path := filepath.Join(dir, "event.json")
-	payload := `{"action":"created","issue":{"number":3,"title":"PR","body":"","pull_request":{"url":"https://api.github.com/repos/o/r/pulls/3"}},"comment":{"body":"hi @vesvabot"},"sender":{"login":"bob"}}`
+	payload := `{"action":"created","issue":{"number":3,"title":"PR","body":"","pull_request":{"url":"https://api.github.com/repos/o/r/pulls/3"}},"comment":{"body":"hi @peggbot"},"sender":{"login":"bob"}}`
 	if err := os.WriteFile(path, []byte(payload), 0o600); err != nil {
 		t.Fatal(err)
 	}
@@ -61,18 +61,18 @@ func TestMentions(t *testing.T) {
 		body string
 		want bool
 	}{
-		{"@vesvabot please check", true},
-		{"ping @vesvabot now", true},
-		{"@vesvabot", true},
-		{"@vesvabot!", true},
-		{"@vesvabot, thanks", true},
-		{"hello vesvabot", false},
-		{"@vesvabotter", false},
-		{"xvesvabot", false},
+		{"@peggbot please check", true},
+		{"ping @peggbot now", true},
+		{"@peggbot", true},
+		{"@peggbot!", true},
+		{"@peggbot, thanks", true},
+		{"hello peggbot", false},
+		{"@peggbotter", false},
+		{"xpeggbot", false},
 		{"", false},
 	}
 	for _, c := range cases {
-		if got := Mentions(c.body, "vesvabot"); got != c.want {
+		if got := Mentions(c.body, "peggbot"); got != c.want {
 			t.Errorf("Mentions(%q) = %v, want %v", c.body, got, c.want)
 		}
 	}

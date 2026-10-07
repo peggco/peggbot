@@ -10,7 +10,7 @@ import (
 
 	githubv3 "github.com/google/go-github/v86/github"
 
-	"github.com/vesvai/vesvai/pkg/sdk"
+	"github.com/peggco/pegg/pkg/sdk"
 )
 
 var markdownImageRE = regexp.MustCompile(`!\[[^\]]*\]\((https?://[^)\s]+)\)`)
@@ -83,7 +83,7 @@ func NewGitHubTools(opts GitHubToolOptions) ([]sdk.Tool, error) {
 			"Add labels to a GitHub issue or pull request.",
 			obj(map[string]any{
 				"issue_number": intProp("The issue or pull request number."),
-				"labels":       arrProp("Labels to add, e.g. [\"vesvabot\", \"wip\"]."),
+				"labels":       arrProp("Labels to add, e.g. [\"peggbot\", \"wip\"]."),
 			}, []string{"issue_number", "labels"}),
 			kit.addLabels),
 		spec("github_remove_label",
@@ -97,7 +97,7 @@ func NewGitHubTools(opts GitHubToolOptions) ([]sdk.Tool, error) {
 			"Create a GitHub pull request. The head branch must already exist in the repository (push it with git first).",
 			obj(map[string]any{
 				"title": strProp("The pull request title."),
-				"head":  strProp("The branch with your changes, e.g. 'vesvabot/issue-42'."),
+				"head":  strProp("The branch with your changes, e.g. 'peggbot/issue-42'."),
 				"base":  strProp("The branch to merge into, usually 'main'."),
 				"body":  strProp("The pull request body in Markdown. Reference the issue with 'Closes #42' when it fixes one."),
 				"draft": boolProp("Create as a draft pull request (optional, default false)."),

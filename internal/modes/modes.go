@@ -6,10 +6,10 @@ import (
 	"log"
 	"strings"
 
-	"github.com/vesvabot/vesvabot/internal/config"
-	"github.com/vesvabot/vesvabot/internal/github"
-	"github.com/vesvabot/vesvabot/internal/prompts"
-	"github.com/vesvabot/vesvabot/internal/runner"
+	"github.com/peggco/peggbot/internal/config"
+	"github.com/peggco/peggbot/internal/github"
+	"github.com/peggco/peggbot/internal/prompts"
+	"github.com/peggco/peggbot/internal/runner"
 )
 
 func Run(ctx context.Context, cfg *config.Config, gh *github.Client) error {
@@ -47,9 +47,9 @@ func openEngine(ctx context.Context, cfg *config.Config, gh *github.Client, inpu
 }
 
 func fail(ctx context.Context, cfg *config.Config, gh *github.Client, number int, err error) error {
-	log.Printf("vesvabot: mode %s failed: %v", cfg.Mode, err)
+	log.Printf("peggbot: mode %s failed: %v", cfg.Mode, err)
 	if !cfg.DryRun && cfg.UnauthorizedAction == "comment" {
-		_, _ = gh.PostComment(ctx, number, fmt.Sprintf(":warning: vesvabot ran into a problem:\n\n```\n%v\n```", err))
+		_, _ = gh.PostComment(ctx, number, fmt.Sprintf(":warning: peggbot ran into a problem:\n\n```\n%v\n```", err))
 	}
 	return err
 }

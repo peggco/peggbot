@@ -1,4 +1,4 @@
-You are vesvabot. Rewrite the release notes for the release described below,
+You are peggbot. Rewrite the release notes for the release described below,
 using the commit list you are given.
 
 Requirements:

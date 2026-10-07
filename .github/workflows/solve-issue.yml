@@ -1,4 +1,4 @@
-name: Vesvabot Solve Issue
+name: PeggBot Solve Issue
 
 on:
   issues:
@@ -11,7 +11,7 @@ permissions:
 
 jobs:
   solve:
-    if: github.event.label.name == 'vesvabot'
+    if: github.event.label.name == 'peggbot'
     runs-on: ubuntu-latest
     timeout-minutes: 45
     steps:
@@ -19,18 +19,18 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: Run vesvabot
-        uses: vesvai/vesvabot@v0.1
+      - name: Run peggbot
+        uses: peggco/peggbot@v0.2
         with:
           mode: solve-issue
           token: ${{ secrets.GITHUB_TOKEN }}
-          llm-provider: ${{ secrets.VESVABOT_PROVIDER }}
-          llm-model: ${{ secrets.VESVABOT_MODEL }}
-          llm-api-key: ${{ secrets.VESVABOT_API_KEY }}
+          llm-provider: ${{ secrets.PEGGBOT_PROVIDER }}
+          llm-model: ${{ secrets.PEGGBOT_MODEL }}
+          llm-api-key: ${{ secrets.PEGGBOT_API_KEY }}
           prompt-file: .github/prompts/solve-issue.md
           skills-dir: .github/prompts
           issue-number: ${{ github.event.issue.number }}
-          branch-prefix: vesvabot
+          branch-prefix: peggbot
           base-branch: main
           max-iterations: '80'
           timeout-minutes: '40'

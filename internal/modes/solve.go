@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/vesvabot/vesvabot/internal/config"
-	"github.com/vesvabot/vesvabot/internal/github"
+	"github.com/peggco/peggbot/internal/config"
+	"github.com/peggco/peggbot/internal/github"
 )
 
 func SolveIssue(ctx context.Context, cfg *config.Config, gh *github.Client) error {

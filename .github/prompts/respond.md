@@ -1,6 +1,6 @@
 # Respond — additional instructions
 
-Appended to the default respond prompt (answer @vesvabot mentions from
+Appended to the default respond prompt (answer @peggbot mentions from
 repository admins/owners).
 
 - Answer in the same language the question was asked in.

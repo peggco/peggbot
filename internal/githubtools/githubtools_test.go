@@ -8,7 +8,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/vesvai/vesvai/pkg/sdk"
+	"github.com/peggco/pegg/pkg/sdk"
 )
 
 func TestNewGitHubToolsRequiresToken(t *testing.T) {
@@ -164,11 +164,11 @@ func TestGitHubCreatePullRequest(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	out, err := tool.Execute(context.Background(), `{"title":"Fix build","head":"vesvabot/issue-42","base":"main","body":"Closes #42"}`)
+	out, err := tool.Execute(context.Background(), `{"title":"Fix build","head":"peggbot/issue-42","base":"main","body":"Closes #42"}`)
 	if err != nil {
 		t.Fatalf("execute: %v", err)
 	}
-	if got.Title != "Fix build" || got.Head != "vesvabot/issue-42" || got.Base != "main" || got.Body != "Closes #42" {
+	if got.Title != "Fix build" || got.Head != "peggbot/issue-42" || got.Base != "main" || got.Body != "Closes #42" {
 		t.Errorf("request = %+v", got)
 	}
 	if !strings.Contains(out, "/pull/9") {

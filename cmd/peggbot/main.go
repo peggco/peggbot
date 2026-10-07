@@ -7,13 +7,13 @@ import (
 	"os/signal"
 	"syscall"
 
-	"github.com/vesvabot/vesvabot/internal/config"
-	"github.com/vesvabot/vesvabot/internal/github"
-	"github.com/vesvabot/vesvabot/internal/modes"
+	"github.com/peggco/peggbot/internal/config"
+	"github.com/peggco/peggbot/internal/github"
+	"github.com/peggco/peggbot/internal/modes"
 )
 
 func main() {
-	log.SetPrefix("vesvabot: ")
+	log.SetPrefix("peggbot: ")
 	log.SetFlags(log.LstdFlags)
 
 	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)

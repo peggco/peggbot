@@ -6,8 +6,8 @@ import (
 	"log"
 	"strings"
 
-	"github.com/vesvabot/vesvabot/internal/config"
-	"github.com/vesvabot/vesvabot/internal/github"
+	"github.com/peggco/peggbot/internal/config"
+	"github.com/peggco/peggbot/internal/github"
 
 	githubv3 "github.com/google/go-github/v86/github"
 )

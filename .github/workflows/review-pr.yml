@@ -1,4 +1,4 @@
-name: Vesvabot Review PR
+name: PeggBot Review PR
 
 on:
   pull_request:
@@ -12,7 +12,7 @@ jobs:
   review:
     if: >-
       github.event.requested_reviewer != null &&
-      github.event.requested_reviewer.login == 'vesvabot' &&
+      github.event.requested_reviewer.login == 'peggbot' &&
       github.event.pull_request.head.repo.full_name == github.repository
     runs-on: ubuntu-latest
     timeout-minutes: 45
@@ -22,14 +22,14 @@ jobs:
           ref: ${{ github.event.pull_request.head.ref }}
           fetch-depth: 0
 
-      - name: Run vesvabot
-        uses: vesvai/vesvabot@v0.1
+      - name: Run peggbot
+        uses: peggco/peggbot@v0.2
         with:
           mode: review-pr
           token: ${{ secrets.GITHUB_TOKEN }}
-          llm-provider: ${{ secrets.VESVABOT_PROVIDER }}
-          llm-model: ${{ secrets.VESVABOT_MODEL }}
-          llm-api-key: ${{ secrets.VESVABOT_API_KEY }}
+          llm-provider: ${{ secrets.PEGGBOT_PROVIDER }}
+          llm-model: ${{ secrets.PEGGBOT_MODEL }}
+          llm-api-key: ${{ secrets.PEGGBOT_API_KEY }}
           prompt-file: .github/prompts/review-pr.md
           skills-dir: .github/prompts
           pull-request-number: ${{ github.event.pull_request.number }}

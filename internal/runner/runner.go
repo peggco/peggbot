@@ -5,11 +5,11 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/vesvabot/vesvabot/internal/config"
-	"github.com/vesvabot/vesvabot/internal/github"
-	"github.com/vesvabot/vesvabot/internal/githubtools"
+	"github.com/peggco/peggbot/internal/config"
+	"github.com/peggco/peggbot/internal/github"
+	"github.com/peggco/peggbot/internal/githubtools"
 
-	"github.com/vesvai/vesvai/pkg/sdk"
+	"github.com/peggco/pegg/pkg/sdk"
 )
 
 var BaseTools = []string{

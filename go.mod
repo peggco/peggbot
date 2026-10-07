@@ -1,10 +1,10 @@
-module github.com/vesvabot/vesvabot
+module github.com/peggco/peggbot
 
 go 1.26.5
 
 require (
 	github.com/google/go-github/v86 v86.0.0
-	github.com/vesvai/vesvai v0.1.3
+	github.com/peggco/pegg v0.1.5
 )
 
 require (

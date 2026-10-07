@@ -16,7 +16,7 @@ func setEnv(t *testing.T, pairs map[string]string) {
 
 func TestLoadValid(t *testing.T) {
 	setEnv(t, map[string]string{
-		"GITHUB_REPOSITORY":     "vesvai/vesvai",
+		"GITHUB_REPOSITORY":     "peggco/pegg",
 		"GITHUB_ACTOR":          "octocat",
 		"GITHUB_WORKSPACE":      "/workspace",
 		"INPUT_MODE":            "solve-issue",
@@ -32,7 +32,7 @@ func TestLoadValid(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Load: %v", err)
 	}
-	if cfg.Owner != "vesvai" || cfg.Repo != "vesvai" {
+	if cfg.Owner != "peggco" || cfg.Repo != "pegg" {
 		t.Errorf("owner/repo = %q/%q", cfg.Owner, cfg.Repo)
 	}
 	if cfg.IssueNumber != 42 {

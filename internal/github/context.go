@@ -36,7 +36,7 @@ func (c *Client) DownloadAttachments(ctx context.Context, bodies []string, max i
 	for _, url := range urls {
 		path, err := c.download(ctx, url)
 		if err != nil {
-			fmt.Fprintf(os.Stderr, "vesvabot: attachment download failed for %s: %v\n", url, err)
+			fmt.Fprintf(os.Stderr, "peggbot: attachment download failed for %s: %v\n", url, err)
 			continue
 		}
 		files = append(files, path)
@@ -74,7 +74,7 @@ func (c *Client) download(ctx context.Context, url string) (string, error) {
 	if ct := resp.Header.Get("Content-Type"); ct != "" && !strings.HasPrefix(ct, "image/") {
 		return "", fmt.Errorf("attachment is not an image (%s)", ct)
 	}
-	dir, err := os.MkdirTemp("", "vesvabot-attachments")
+	dir, err := os.MkdirTemp("", "peggbot-attachments")
 	if err != nil {
 		return "", err
 	}
